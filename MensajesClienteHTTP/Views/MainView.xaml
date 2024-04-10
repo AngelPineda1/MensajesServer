@@ -7,11 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
-        <DataGrid>
+        <StackPanel Width="250" DockPanel.Dock="Bottom" Margin="5" >
+            <Label>Texto:</Label>
+            <TextBox AcceptsReturn="True" Height="50"></TextBox>
+            <Label>Color de letra:</Label>
+            <ComboBox></ComboBox>
+            <Label>Color de fondo:</Label>
+            <ComboBox></ComboBox>
+            <Button Content="Enviar" HorizontalAlignment="Center" Margin="5"></Button>
+        </StackPanel>
+        <DataGrid DockPanel.Dock="Top" ItemsSource="{Binding Servers}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Nombre servidor"></DataGridTextColumn>
-                <DataGridTextColumn Header="Direccion Ip"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ultima conexion"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Nombre servidor" Binding="{Binding NombreServer}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Direccion Ip" Binding="{Binding IPEndpoint.IPAddress}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ultima conexion" Binding="{Binding KeepAlive}"></DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>
