@@ -11,15 +11,33 @@
             <Label>Texto:</Label>
             <TextBox AcceptsReturn="True" Height="50"></TextBox>
             <Label>Color de letra:</Label>
-            <ComboBox></ComboBox>
+            <ComboBox ItemsSource="{Binding Colores}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Rectangle Width="70" Height="30" Fill="{Binding .}"></Rectangle>
+                            <TextBlock Text="{Binding Color}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Label>Color de fondo:</Label>
-            <ComboBox></ComboBox>
+            <ComboBox ItemsSource="{Binding Colores}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Rectangle Width="70" Height="30" Fill="{Binding .}"></Rectangle>
+                            <TextBlock Text="{Binding Color}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Button Content="Enviar" HorizontalAlignment="Center" Margin="5"></Button>
         </StackPanel>
         <DataGrid DockPanel.Dock="Top" ItemsSource="{Binding Servers}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Nombre servidor" Binding="{Binding NombreServer}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Direccion Ip" Binding="{Binding IPEndpoint.IPAddress}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Direccion Ip" Binding="{Binding IPEndpoint.Address}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Ultima conexion" Binding="{Binding KeepAlive}"></DataGridTextColumn>
 
             </DataGrid.Columns>
