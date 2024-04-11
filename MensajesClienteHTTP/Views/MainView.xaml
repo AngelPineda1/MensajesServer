@@ -9,20 +9,20 @@
     <DockPanel>
         <StackPanel Width="250" DockPanel.Dock="Bottom" Margin="5" >
             <Label>Texto:</Label>
-            <TextBox AcceptsReturn="True" Height="50"></TextBox>
+            <TextBox AcceptsReturn="True" Height="50" Text="{Binding mensajesDto.Texto}"></TextBox>
             <Label>Color de letra:</Label>
-            <ComboBox ItemsSource="{Binding Colores}">
+            <ComboBox ItemsSource="{Binding Colores}" SelectedItem="{Binding mensajesDto.ColorLetra}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
-                            <Rectangle Width="70" Height="30" Fill="{Binding .}"></Rectangle>
+                            <Rectangle Width="70" Height="30" Fill="{Binding .}" ></Rectangle>
                             <TextBlock Text="{Binding Color}"></TextBlock>
                         </WrapPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <Label>Color de fondo:</Label>
-            <ComboBox ItemsSource="{Binding Colores}">
+            <ComboBox ItemsSource="{Binding Colores}" SelectedItem="{Binding mensajesDto.ColorFondo}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
@@ -32,9 +32,9 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Content="Enviar" HorizontalAlignment="Center" Margin="5"></Button>
+            <Button Content="Enviar" HorizontalAlignment="Center" Margin="5" Command="{Binding EnviarCommand}"></Button>
         </StackPanel>
-        <DataGrid DockPanel.Dock="Top" ItemsSource="{Binding Servers}" AutoGenerateColumns="False">
+        <DataGrid DockPanel.Dock="Top" ItemsSource="{Binding Servers}" AutoGenerateColumns="False" SelectedItem="{Binding Seleccionado}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Nombre servidor" Binding="{Binding NombreServer}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Direccion Ip" Binding="{Binding IPEndpoint.Address}"></DataGridTextColumn>
